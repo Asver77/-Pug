@@ -408,7 +408,8 @@ HTML
 ````html 
 <h1>On Dogs: Man's Best Friend</h1>
 <p>Written with love by enlore</p>
-<p>This will be safe: <span>escape!</span></p>````
+<p>This will be safe: <span>escape!</span></p>
+````
 ### <a name="Миксины"></a> Миксины
 Поддержка миксинов позволяет создавать переиспользуемые блоки.
 
