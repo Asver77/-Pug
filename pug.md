@@ -185,3 +185,29 @@ HTML
   <li>3</li>
 </ul>
 ````
+### Вставка Javascrtip кода
+Pug поддерживает вставку частей JavaScript кода в шаблоны.
+
+Не буфферизированный код начинается с символа `-`
+Pug
+````pug
+- for (var x = 0; x < 3; x++)
+  li item
+````
+HTML
+````html 
+<li>item</li>
+<li>item</li>
+<li>item</li>
+````
+***
+Буфферизированный код начинается с символа `=`
+Pug
+````pug
+p
+  = 'This code is <escaped>!'
+````
+HTML
+````html 
+<p>This code is &lt;escaped&gt;!</p>
+````
