@@ -3,14 +3,27 @@ Pug - это препроцессор HTML и шаблонизатор, кото
 
 ### Теги
 В Pug нет закрывающих тегов, вместо этого он использует строгую табуляцию (или отступы) для определения вложености тегов.
+Для закрытия тегов в конце необходимо добавить символ `/`: `foo(bar='baz')/`
+
+Pug
 ```pug
-div
-  p Hello!
-  p World!
+ul
+  li Item A
+  li Item B
+  li Item C
 ```
+Html
 ```html
-<div>
-  <p>Hello!</p>
-  <p>World!</p>
-</div>
+<ul>
+  <li>Item A</li>
+  <li>Item B</li>
+  <li>Item C</li>
+</ul>
 ````
+
+#### Текст
+
+```pug
+p This is plain old <em>text</em> content.
+```html
+<p>This is plain old <em>text</em> content.</p>
