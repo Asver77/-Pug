@@ -6,14 +6,14 @@ Pug - это препроцессор HTML и шаблонизатор, кото
 Для закрытия тегов в конце необходимо добавить символ `/`: `foo(bar='baz')/`
 
 Pug
-```pug
+````pug
 ul
   li Item A
   li Item B
   li Item C
-```
-Html
-```html
+````
+HTML
+````html
 <ul>
   <li>Item A</li>
   <li>Item B</li>
@@ -22,8 +22,23 @@ Html
 ````
 
 #### Текст
+Непосредственно в Pug можно вставлять элементы в HTML синтаксисе
 
-```pug
+Pug
+````pug
 p This is plain old <em>text</em> content.
+````
+HTML
 ```html
 <p>This is plain old <em>text</em> content.</p>
+````
+Pug
+````pug
+p
+  | The pipe always goes at the beginning of its own line,
+  | not counting indentation.
+````
+HTML
+````html 
+<p>The pipe always goes at the beginning of its own line, not counting indentation.</p>
+````
