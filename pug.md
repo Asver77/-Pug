@@ -192,7 +192,7 @@ HTML
   <li>3</li>
 </ul>
 ````
-### <a name="tith"></a> Вставка JavaScript кода
+### <a name="Вставка-JavaScript-кода"></a> Вставка JavaScript кода
 Pug поддерживает вставку частей JavaScript кода в шаблоны.
 
 Не буфферизированный код начинается с символа `-`  
@@ -217,4 +217,39 @@ p
 HTML
 ````html 
 <p>This code is &lt;escaped&gt;!</p>
+````
+
+### <a name="Комментарии"></a> Комментарии
+Существуют различные комментариев: те, которые будут отображаться после компиляции, и те, которые пропадут.
+
+Pug
+````pug
+// just some paragraphs
+//- will not output within markup
+p foo
+p bar
+````
+HTML
+````html 
+<!-- just some paragraphs-->
+<p>foo</p>
+<p>bar</p>
+````
+***
+Pug
+````pug
+body
+  //-
+    Comments for your template writers.
+    Use as much text as you want.
+  //
+    Comments for your HTML readers.
+    Use as much text as you want.
+````
+HTML
+````html 
+<body>
+  <!--Comments for your HTML readers.
+Use as much text as you want.-->
+</body>
 ````
