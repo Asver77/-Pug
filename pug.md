@@ -253,3 +253,96 @@ HTML
 Use as much text as you want.-->
 </body>
 ````
+
+### <a name="Условия"></a> Условия
+***
+Pug
+````pug
+- var user = { description: 'foo bar baz' }
+- var authorised = false
+#user
+  if user.description
+    h2.green Description
+    p.description= user.description
+  else if authorised
+    h2.blue Description
+    p.description.
+      User has no description,
+      why not add one...
+  else
+    h2.red Description
+    p.description User has no description
+````
+HTML
+````html
+<div id="user">
+  <h2 class="green">Description</h2>
+  <p class="description">foo bar baz</p>
+</div>
+````
+
+### <a name="Тип-документа"></a> Тип документа
+***
+Pug
+````pug
+doctype html
+````
+HTML
+````html 
+<!DOCTYPE html>
+````
+
+### <a name="Инклюды"></a> Инклюды (Includes)
+Pug имеет возможность вставки содержимого одного файла в другой файл Pug.
+
+***
+Pug
+````pug
+//- index.pug
+doctype html
+html
+  head
+    style
+      include style.css
+  body
+    h1 My Site
+    p Welcome to my super lame site.
+    script
+      include script.js
+````
+````css
+/* style.css */
+h1 {
+  color: red;
+}
+````
+````js
+// script.js
+console.log('You are awesome');
+````
+HTML
+````html 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    /* style.css */
+
+    h1 {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Site</h1>
+  <p>Welcome to my super lame site.</p>
+  <script>
+    // script.js
+    console.log('You are awesome');
+  </script>
+</body>
+
+</html>
+````
