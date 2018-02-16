@@ -47,7 +47,6 @@ HTML
 ### Атрибуты
 В Pug можно встраивать JavaScript код, благодаря чему возможны конструкции показанные ниже.
 
-***
 Pug
 ````pug
 a(href='google.com') Google
@@ -116,4 +115,73 @@ HTML
 ````html 
 <a class="foo bar baz"></a>
 <a class="bang foo bar baz bing"></a>
+````
+
+### Констуркция Switch Case
+Pug поддерживает switch case, которая представляет собой более наглядный способ сравнить выражение сразу с несколькими вариантами.
+
+Pug
+````pug
+- var friends = 10
+case friends
+  when 0
+    p you have no friends
+  when 1
+    p you have a friend
+  default
+    p you have #{friends} friends
+````
+HTML
+````html 
+<p>you have 10 friends</p>
+````
+
+### Циклы
+
+Pug
+````pug
+ul
+  each val, index in ['zero', 'one', 'two']
+    li= index + ': ' + val
+````
+HTML
+````html 
+<ul>
+  <li>0: zero</li>
+  <li>1: one</li>
+  <li>2: two</li>
+</ul>
+````
+***
+Pug
+````pug
+- var values = [];
+ul
+  each val in values
+    li= val
+  else
+    li There are no values
+````
+HTML
+````html 
+<ul>
+  <li>There are no values</li>
+</ul>
+````
+***
+Pug
+````pug
+- var n = 0;
+ul
+  while n < 4
+    li= n++
+````
+HTML
+````html 
+<ul>
+  <li>0</li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
 ````
