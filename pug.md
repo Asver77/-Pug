@@ -21,7 +21,7 @@ HTML
 </ul>
 ````
 
-#### Текст
+### Текст
 Непосредственно в Pug можно вставлять элементы в HTML синтаксисе
 
 Pug
@@ -32,6 +32,7 @@ HTML
 ```html
 <p>This is plain old <em>text</em> content.</p>
 ````
+***
 Pug
 ````pug
 p
@@ -42,3 +43,12 @@ HTML
 ````html 
 <p>The pipe always goes at the beginning of its own line, not counting indentation.</p>
 ````
+***
+Pug
+````pug
+````
+HTML
+````html 
+````
+
+
