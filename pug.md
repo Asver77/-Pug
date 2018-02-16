@@ -8,7 +8,7 @@ Pug - это препроцессор HTML и шаблонизатор, кото
 1. 
 1. 
 
-### Теги
+### <a name="Теги"></a> Теги
 В Pug нет закрывающих тегов, вместо этого он использует строгую табуляцию (или отступы) для определения вложености тегов.
 Для закрытия тегов в конце необходимо добавить символ `/`: `foo(bar='baz')/`
 
@@ -28,7 +28,7 @@ HTML
 </ul>
 ````
 
-### Текст
+### <a name="Текст"></a> Текст
 Непосредственно в Pug можно вставлять элементы в HTML синтаксисе
 
 Pug
@@ -51,7 +51,7 @@ HTML
 <p>The pipe always goes at the beginning of its own line, not counting indentation.</p>
 ````
 
-### Атрибуты
+### <a name="Атрибуты"></a> Атрибуты
 В Pug можно встраивать JavaScript код, благодаря чему возможны конструкции показанные ниже.
 
 Pug
@@ -124,7 +124,7 @@ HTML
 <a class="bang foo bar baz bing"></a>
 ````
 
-### Констуркция Switch Case
+### <a name="Констуркция-Switch-Case"></a> Констуркция Switch Case
 Pug поддерживает switch case, которая представляет собой более наглядный способ сравнить выражение сразу с несколькими вариантами.
 
 Pug
@@ -143,8 +143,7 @@ HTML
 <p>you have 10 friends</p>
 ````
 
-### Циклы
-
+### <a name="Циклы"></a> Циклы
 Pug
 ````pug
 ul
@@ -255,7 +254,6 @@ Use as much text as you want.-->
 ````
 
 ### <a name="Условия"></a> Условия
-***
 Pug
 ````pug
 - var user = { description: 'foo bar baz' }
@@ -295,7 +293,6 @@ HTML
 ### <a name="Инклюды"></a> Инклюды (Includes)
 Pug имеет возможность вставки содержимого одного файла в другой файл Pug.
 
-***
 Pug
 ````pug
 //- index.pug
@@ -310,12 +307,14 @@ html
     script
       include script.js
 ````
+CSS
 ````css
 /* style.css */
 h1 {
   color: red;
 }
 ````
+JavaScript
 ````js
 // script.js
 console.log('You are awesome');
@@ -324,17 +323,14 @@ HTML
 ````html 
 <!DOCTYPE html>
 <html>
-
 <head>
   <style>
     /* style.css */
-
     h1 {
       color: red;
     }
   </style>
 </head>
-
 <body>
   <h1>My Site</h1>
   <p>Welcome to my super lame site.</p>
@@ -343,6 +339,51 @@ HTML
     console.log('You are awesome');
   </script>
 </body>
+</html>
+````
+### <a name="Наследование-шаблонов"></a> Наследование шаблонов
 
+Pug поддерживает наследование шаблонов. Наследование шаблонов работает через ключевые слова `block` и `extend`. В шаблоне `block` - обычный блок Pug, который может заменить дочерний шаблон. Этот процесс является рекурсивным.
+
+***
+Pug
+````pug
+//- base.pug
+html
+  head
+    title My Site 
+    block scripts
+      script(src='/jquery.js')
+  body
+    block content
+    block foot
+      #footer
+        p some footer content
+        
+//- home.pug
+extends base.pug
+- var title = 'Animals'
+- var pets = ['cat', 'dog']
+block content
+  h1= title // - or #{title} without =
+  each petName in pets
+    p= petName // -or #{petName} without =
+````
+HTML
+````html 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My site</title>
+  <script src='/jquery.js'></script>
+</head>
+<body>
+  <h1>Animals</h1>
+  <p>cat</p>
+  <p>dog</p>
+  <div id='footer'>
+    <p>some footer content</p>
+  </div>
+</body>
 </html>
 ````
