@@ -8,6 +8,8 @@ Pug - это препроцессор HTML и шаблонизатор, кото
 1. 
 1. 
 
+[Официальная документация по Pug](https://pugjs.org/language/attributes.html)
+
 ### <a name="Теги"></a> Теги
 В Pug нет закрывающих тегов, вместо этого он использует строгую табуляцию (или отступы) для определения вложености тегов.
 Для закрытия тегов в конце необходимо добавить символ `/`: `foo(bar='baz')/`
@@ -345,7 +347,6 @@ HTML
 
 Pug поддерживает наследование шаблонов. Наследование шаблонов работает через ключевые слова `block` и `extend`. В шаблоне `block` - обычный блок Pug, который может заменить дочерний шаблон. Этот процесс является рекурсивным.
 
-***
 Pug
 ````pug
 //- base.pug
@@ -386,4 +387,93 @@ HTML
   </div>
 </body>
 </html>
+````
+
+### <a name="Интерполяция-переменных"></a> Интерполяция переменных
+Pug предоставляет различные способы вывода переменных.
+
+Pug
+````pug
+- var title = "On Dogs: Man's Best Friend";
+- var author = "enlore";
+- var theGreat = "<span>escape!</span>";
+
+h1= title
+p Written with love by #{author}
+p This will be safe: !{theGreat}
+````
+HTML
+````html 
+<h1>On Dogs: Man's Best Friend</h1>
+<p>Written with love by enlore</p>
+<p>This will be safe: <span>escape!</span></p>````
+
+### <a name="Миксины"></a> Миксины
+Поддержка миксинов позволяет создавать переиспользуемые блоки.
+
+Pug
+````pug
+//- Declaration
+mixin pet(name)
+  li.pet= name
+//- use
+ul
+  +pet('cat')
+  +pet('dog')
+  +pet('pig')
+````
+HTML
+````html 
+<ul>
+  <li class="pet">cat</li>
+  <li class="pet">dog</li>
+  <li class="pet">pig</li>
+</ul>
+````
+***
+Pug
+````pug
+mixin article(title)
+  .article
+    .article-wrapper
+      h1= title
+      if block
+        block
+      else
+        p No content provided
+
++article('Hello world')
+
++article('Hello world')
+  p This is my
+  p Amazing article
+````
+HTML
+````html 
+<div class="article">
+  <div class="article-wrapper">
+    <h1>Hello world</h1>
+    <p>No content provided</p>
+  </div>
+</div>
+<div class="article">
+  <div class="article-wrapper">
+    <h1>Hello world</h1>
+    <p>This is my</p>
+    <p>Amazing article</p>
+  </div>
+</div>
+````
+***
+Pug
+````pug
+mixin link(href, name)
+  //- attributes == {class: "btn"}
+  a(class!=attributes.class href=href)= name
+
++link('/foo', 'foo')(class="btn")
+````
+HTML
+````html 
+<a class="btn" href="/foo">foo</a>
 ````
